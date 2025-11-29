@@ -3,6 +3,7 @@ import { ArtWorkCard } from './components/ArtWorkCard';
 import { artworksAPI } from './services/api';
 import './styles/app.css';
 import './styles/marketplace.css';
+import Header from "./components/Header";
 
 function App() {
     const [artworks, setArtworks] = useState([]);
@@ -24,11 +25,22 @@ function App() {
             });
     }, []);
 
-    if (loading) return <div>Loading artworks...</div>;
-    if (error) return <div>Error: {error}</div>;
+    if (loading) return (
+        <div className="App">
+            <Header />
+            <div className="container text-center mt-5">Loading artworks...</div>
+        </div>
+    );
+    if (error) return (
+        <div className="App">
+            <Header />
+            <div>Error: {error}</div>
+        </div>
+    );
 
     return (
         <div className="App">
+            <Header />
             <h1>🎨 Art Marketplace</h1>
             <div className="artworks-grid">
                 {artworks.map(artwork => (
