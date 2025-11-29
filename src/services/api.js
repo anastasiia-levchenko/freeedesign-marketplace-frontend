@@ -10,7 +10,7 @@ export const artworksAPI = {
             ...(search && { searchTerm: search })
         });
 
-        return fetch(`${API_BASE}${ENDPOINTS.ARTWORKS}?${params}`)
+        return fetch(`${API_BASE}${ENDPOINTS.ARTWORKS}?${params}`, {credentials: "include"})
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error status: ${response.status}`);
